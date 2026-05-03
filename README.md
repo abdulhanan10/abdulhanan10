@@ -10,6 +10,7 @@ I'm an AI Engineer passionate about **Computer Vision**, **Machine Learning**, a
 ---
 
 ### 🌱 Currently learning
+- Cloud Computing
 - Full Stack Web Development (React.js + Python backend)
 - Backend development with Python
 - Web scraping techniques
