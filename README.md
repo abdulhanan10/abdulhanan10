@@ -5,7 +5,6 @@ I'm an AI Engineer passionate about **Computer Vision**, **Machine Learning**, a
 
 ### 🔭 What I'm building
 - **BioMechAI** — AI-powered fitness app with real-time 3D pose tracking, exercise recognition, injury prediction (LSTM + Isolation Forest), and a conversational voice coach (LLaVA-1.5-7B)
-- **MAE for Self-Supervised Learning** — Asymmetric encoder-decoder using Vision Transformers (ViT) with 75% masking for image representation learning
 
 ---
 
