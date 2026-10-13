@@ -14,7 +14,7 @@ Software Engineer · Flutter · Full Stack · AI / ML
   </a>
 </p>---
 
-🚀 About Me
+-> About Me
 
 I'm a Computer Science student at FAST-NUCES with a strong interest in building real-world software products across mobile development, full-stack engineering, artificial intelligence, and computer vision.
 
