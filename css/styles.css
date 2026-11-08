@@ -246,3 +246,43 @@ section{padding:88px 0;border-top:1px solid var(--line)}.section-head{display:fl
     transition: none !important;
   }
 }
+
+
+/* Profile Picture Animation */
+.avatar {
+  animation:
+    profileFloat 5s ease-in-out infinite,
+    profileGlow 4s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+@keyframes profileFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+
+@keyframes profileGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 8px rgba(101,181,255,.06),
+      0 0 18px rgba(101,181,255,.10);
+  }
+  50% {
+    box-shadow:
+      0 0 0 11px rgba(101,181,255,.12),
+      0 0 32px rgba(101,181,255,.24);
+  }
+}
+
+.avatar:hover {
+  translate: 0 -3px;
+  transform: scale(1.045) rotate(1.5deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
