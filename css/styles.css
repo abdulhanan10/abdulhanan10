@@ -189,3 +189,60 @@ section{padding:88px 0;border-top:1px solid var(--line)}.section-head{display:fl
   }
 }
 
+
+/* Remove blue tap and focus highlights */
+.agent-launcher,
+.agent-launcher:focus,
+.agent-launcher:focus-visible,
+.agent-launcher:active {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  background-color: transparent;
+}
+
+/* Sliding pop-up banner */
+.agent-launcher {
+  animation: bannerSlideIn 0.8s cubic-bezier(.22, 1, .36, 1) both;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Slide in from the right */
+@keyframes bannerSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+  75% {
+    opacity: 1;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Gentle hover and press feedback */
+.agent-launcher:hover {
+  transform: translateY(-3px);
+}
+
+.agent-launcher:active {
+  transform: scale(.97);
+  filter: brightness(.98);
+}
+
+/* Prevent mobile tap flash */
+.agent-launcher {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .agent-launcher {
+    animation: none !important;
+    transition: none !important;
+  }
+}
