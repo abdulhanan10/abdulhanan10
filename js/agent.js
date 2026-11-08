@@ -38,7 +38,7 @@
       if (API_URL.includes("YOUR-PORTFOLIO-AGENT")) {
         throw new Error("The AI assistant backend has not been configured yet. Deploy the backend and update API_URL in js/agent.js.");
       }
-      const response = await fetch(API_URL, {
+      const response = await fetch(`${API_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: question, history: history.slice(-10, -1) })
