@@ -65,105 +65,127 @@ section{padding:88px 0;border-top:1px solid var(--line)}.section-head{display:fl
 
 
 
-/* Premium animated Ask About Me button */
+
+/* =========================================
+   PREMIUM AI ASSISTANT — BUTTON & CHAT PANEL
+========================================= */
 
 .agent-launcher {
   position: fixed;
-  overflow: visible;
   isolation: isolate;
-  animation: assistantFloat 3s ease-in-out infinite;
+  overflow: hidden;
+  animation: aiFloat 4s ease-in-out infinite;
   transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, .3),
+    0 0 22px rgba(101, 181, 255, .2);
 }
 
-/* Animated glowing ring */
+/* Soft ambient glow */
 .agent-launcher::after {
   content: "";
   position: absolute;
-  inset: -5px;
-  border: 2px solid rgba(101, 181, 255, .65);
+  inset: -4px;
+  border: 1px solid rgba(155, 140, 255, .7);
   border-radius: inherit;
-  z-index: -1;
-  animation: assistantRing 2.4s ease-out infinite;
   pointer-events: none;
+  animation: aiGlow 3s ease-out infinite;
 }
 
-/* Moving shimmer */
+/* Moving light reflection */
 .agent-launcher::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background: linear-gradient(
-    110deg,
-    transparent 20%,
-    rgba(255, 255, 255, .65) 48%,
-    transparent 75%
+    115deg,
+    transparent 25%,
+    rgba(255, 255, 255, .7) 48%,
+    transparent 70%
   );
-  background-size: 220% 100%;
-  animation: assistantShimmer 4s ease-in-out infinite;
+  background-size: 250% 100%;
+  animation: aiShine 5s ease-in-out infinite;
   pointer-events: none;
 }
 
-/* Sparkle icon */
 .agent-launcher-icon {
   display: inline-block;
-  font-size: 1.25rem;
-  animation: assistantSparkle 2.5s ease-in-out infinite;
+  animation: aiSparkle 3s ease-in-out infinite;
+  transform-origin: center;
 }
 
-@keyframes assistantFloat {
-  0%, 100% {
-    transform: translateY(0);
-    box-shadow: 0 12px 34px rgba(0,0,0,.35),
-                0 0 12px rgba(101,181,255,.15);
-  }
-  50% {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 38px rgba(101,181,255,.28);
-  }
+@keyframes aiFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -4px; }
 }
 
-@keyframes assistantRing {
+@keyframes aiGlow {
   0% {
     transform: scale(1);
     opacity: .65;
   }
   100% {
-    transform: scale(1.16);
+    transform: scale(1.17);
     opacity: 0;
   }
 }
 
-@keyframes assistantShimmer {
-  0%, 65% {
-    background-position: 120% 0;
-  }
-  85%, 100% {
-    background-position: -120% 0;
-  }
+@keyframes aiShine {
+  0%, 70% { background-position: 130% 0; }
+  90%, 100% { background-position: -130% 0; }
 }
 
-@keyframes assistantSparkle {
-  0%, 100% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(18deg) scale(1.18);
-  }
+@keyframes aiSparkle {
+  0%, 100% { transform: rotate(0) scale(1); }
+  50% { transform: rotate(15deg) scale(1.12); }
 }
 
+/* Hover and tap feedback */
 .agent-launcher:hover {
-  transform: translateY(-5px) scale(1.04);
-  box-shadow: 0 16px 42px rgba(101,181,255,.35);
+  transform: scale(1.045);
+  box-shadow:
+    0 14px 38px rgba(0, 0, 0, .35),
+    0 0 30px rgba(101, 181, 255, .38);
 }
 
-/* Respect reduced-motion accessibility preference */
+.agent-launcher:active {
+  transform: scale(.97);
+}
+
+/* Smooth chat-window entrance */
+.agent-panel {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px) scale(.97);
+  transform-origin: bottom right;
+  transition:
+    opacity .28s ease,
+    transform .32s cubic-bezier(.2, .8, .2, 1),
+    visibility .32s;
+}
+
+.agent-panel.is-open {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* Respect accessibility preferences */
 @media (prefers-reduced-motion: reduce) {
   .agent-launcher,
   .agent-launcher::before,
   .agent-launcher::after,
   .agent-launcher-icon {
     animation: none !important;
+  }
+
+  .agent-panel {
+    transition: none !important;
   }
 }
 
