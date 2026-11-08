@@ -1,7 +1,7 @@
 
 (() => {
   // Set this to the deployed Render backend URL, without a trailing slash.
-  const API_URL = "https://YOUR-PORTFOLIO-AGENT.onrender.com/api/chat";
+  const API_URL = "https://abdulhanan-portfolio-agent.onrender.com";
   const launcher = document.getElementById("agentLauncher");
   const panel = document.getElementById("agentPanel");
   const close = document.getElementById("agentClose");
