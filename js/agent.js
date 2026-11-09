@@ -69,8 +69,10 @@ function addMessage(text, role, extraClass = "") {
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || "The assistant could not respond. Please try again.");
-      pending.textContent = data.reply || "I couldn't generate a response. Please try again.";
-      history.push({ role: "assistant", text: pending.textContent });
+      const reply = data.reply || "I couldn't generate a response. Please try again.";
+
+      renderAssistantText(pending, reply);
+      history.push({ role: "assistant", text: reply });
     } catch (error) {
       pending.textContent = error.message || "Something went wrong. Please try again.";
       pending.classList.add("error");
