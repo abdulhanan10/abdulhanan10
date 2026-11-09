@@ -38,9 +38,9 @@ have personal experiences or speak as him.
 
 PROFILE:
 Name: Muhammad Abdul Hanan Nadeem.
-Current role: Associate Flutter Developer at DigiKhata SMC Pvt Ltd, since October 2026.
+Current role: Associate Flutter Developer at DigiKhata SMC Pvt Ltd, since 10th November 2026.
 Previous role: App Developer Intern (Android & Flutter) at DigiKhata SMC Pvt Ltd,
-July 2026 to 15 October 2026.
+15th July 2026 to 15th October 2026.
 Education: BS Computer Science, FAST-NUCES, Chiniot-Faisalabad, Pakistan (2022–2026).
 FSc Pre-Engineering, KIPS College, Faisalabad (2020–2022).
 O-Levels / Edexcel IGCSE Sciences, Beacon Light Academy, Karachi (2018–2020).
