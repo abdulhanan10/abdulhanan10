@@ -18,14 +18,38 @@
     if (open) input.focus();
   }
 
-  function addMessage(text, role, extraClass = "") {
-    const node = document.createElement("div");
-    node.className = `agent-message ${role} ${extraClass}`.trim();
+  function renderAssistantText(node, text) {
+  if (window.marked && window.DOMPurify) {
+    const html = window.marked.parse(text, {
+      gfm: true,
+      breaks: false
+    });
+
+    node.innerHTML = window.DOMPurify.sanitize(html);
+
+    node.querySelectorAll("a").forEach(link => {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    });
+  } else {
     node.textContent = text;
-    messages.appendChild(node);
-    messages.scrollTop = messages.scrollHeight;
-    return node;
   }
+}
+
+function addMessage(text, role, extraClass = "") {
+  const node = document.createElement("div");
+  node.className = `agent-message ${role} ${extraClass}`.trim();
+
+  if (role === "assistant") {
+    renderAssistantText(node, text);
+  } else {
+    node.textContent = text;
+  }
+
+  messages.appendChild(node);
+  messages.scrollTop = messages.scrollHeight;
+  return node;
+}
 
   async function ask(question) {
     addMessage(question, "user");
