@@ -250,19 +250,49 @@ section{padding:88px 0;border-top:1px solid var(--line)}.section-head{display:fl
 
 
 
-/* Static professional profile picture — no color animation */
+/* Professional profile portrait */
 .avatar {
-  border: 4px solid #4775a8 !important;
-  background: none !important;
-  animation: none !important;
-  filter: none !important;
-  box-shadow: 0 0 0 6px rgba(101, 181, 255, 0.07),
-              0 10px 28px rgba(0, 0, 0, 0.22) !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 4px solid #4775a8;
+  background: none;
+
+  box-shadow:
+    0 0 0 6px rgba(101, 181, 255, .07),
+    0 10px 28px rgba(0, 0, 0, .22);
+
+  animation: profileEnter .85s cubic-bezier(.2, .75, .25, 1) both;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
 }
 
+@keyframes profileEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Subtle hover interaction */
 .avatar:hover {
-  border-color: #4775a8 !important;
-  filter: none !important;
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.025);
+  border-color: #6da9df;
+
+  box-shadow:
+    0 0 0 7px rgba(101, 181, 255, .10),
+    0 14px 34px rgba(0, 0, 0, .28);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .avatar {
+    animation: none !important;
+    transition: none !important;
+  }
 }
